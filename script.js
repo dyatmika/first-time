@@ -4,13 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let project = localStorage.getItem("project");
 
     if (!nama || !departemen || !project) {
-        window.location.href = "login.html"; // Paksa balik ke login jika belum login
+        window.location.href = "login.html"; // Paksa user login jika belum login
     } else {
         document.getElementById("nama").value = nama;
         document.getElementById("departemen").value = departemen;
         document.getElementById("project").value = project;
     }
+
+    // Pastikan tombol submit berfungsi
+    document.getElementById("submitBtn").addEventListener("click", submitData);
 });
+
 
 // Fungsi login & simpan ke localStorage
 function login() {

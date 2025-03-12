@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (window.location.pathname.includes("index.html")) {
         if (!nama || !departemen || !project) {
-            window.location.href = "login.html"; // Jika belum login, paksa ke login
+            window.location.href = "login.html"; // Redirect jika belum login
         } else {
             document.getElementById("nama").value = nama;
             document.getElementById("departemen").value = departemen;
@@ -31,7 +31,7 @@ function login() {
     localStorage.setItem("departemen", departemen);
     localStorage.setItem("project", project);
 
-    window.location.href = "index.html"; // Redirect ke halaman input
+    window.location.href = "index.html";
 }
 
 // Fungsi Submit Data ke Google Sheets
@@ -49,7 +49,7 @@ function submitData() {
 
     let data = { nama, departemen, project, alat, jumlah };
 
-    fetch("https://script.google.com/macros/s/AKfycbxaeW_URPImp5vbw28d3fq0SE1kc5owC_fEwCniftjV/dev", {
+    fetch("https://script.google.com/macros/s/AKfycxyz1234567890/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -57,7 +57,7 @@ function submitData() {
     .then(response => response.text())
     .then(result => {
         alert("Data berhasil disimpan!");
-        window.location.href = "index.html"; // Kembali ke halaman utama
+        window.location.href = "index.html";
     })
     .catch(error => {
         console.error("Error:", error);
@@ -71,5 +71,5 @@ function logout() {
     localStorage.removeItem("departemen");
     localStorage.removeItem("project");
 
-    window.location.href = "login.html"; // Redirect ke halaman login
+    window.location.href = "login.html";
 }

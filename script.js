@@ -13,19 +13,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function submitData() {
+    // Ambil nilai input
     let nama = document.getElementById("nama").value;
     let departemen = document.getElementById("departemen").value;
     let project = document.getElementById("project").value;
-    let nama_alat = document.getElementById("nama_alat").value;
+    let alat = document.getElementById("alat").value;
     let jumlah = document.getElementById("jumlah").value;
-    let qr_code = document.getElementById("qr_code").value;
-    let fotoInput = document.getElementById("foto");
 
-    if (!nama || !departemen || !project || !nama_alat || !jumlah || !qr_code || !fotoInput.files[0]) {
-        alert("Semua data harus diisi!");
+    if (!nama || !departemen || !project || !alat || !jumlah) {
+        alert("Harap isi semua data!");
         return;
     }
-
     let fotoBarangUrl = await uploadFoto(fotoInput.files[0]);
 
     let formData = {
@@ -34,23 +32,25 @@ async function submitData() {
         project: project,
         nama_alat: nama_alat,
         jumlah: jumlah,
-        qr_code: qr_code,
-        nama_barang: fotoInput.files[0].name,
-        foto_barang: fotoBarangUrl
     };
+let data = { nama, departemen, project, alat, jumlah };
 
-    let response = await fetch("https://script.google.com/macros/s/AKfycby9DOyEt6KfzvgjjnOMaSy4SYXCnPqM6FFyUwgvHAJU5etuJdzmgHWE9mdAPLw42VrEuw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycby9DOyEt6KfzvgjjnOMaSy4SYXCnPqM6FFyUwgvHAJU5etuJdzmgHWE9mdAPLw42VrEuw/exec", {
         method: "POST",
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
-    });
-
-    let result = await response.text();
-    alert(result);
+    })
+    .then(response => response.text())
+    .then(result => {
+        alert(result); // Menampilkan pesan sukses dari Apps Script
+        window.location.href = "index.html"; // Kembali ke halaman utama
+    })
+    .catch(error => console.error("Error:", error));
 }
-
 function logout() {
     localStorage.removeItem("nama");
     localStorage.removeItem("departemen");
-    window.location.href = "login.html"; // Arahkan ke login setelah logout
+    localStorage.removeItem("project");
+
+    window.location.href = "login.html"; // Kembali ke halaman login
 }

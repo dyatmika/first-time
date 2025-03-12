@@ -45,7 +45,7 @@ function submitData() {
 
     let data = { nama, departemen, project, alat, jumlah };
 
-    fetch("https://script.google.com/macros/s/AKfycxyz1234567890/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxaeW_URPImp5vbw28d3fq0SE1kc5owC_fEwCniftjV/dev", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }

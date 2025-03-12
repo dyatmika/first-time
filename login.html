@@ -3,41 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT APA HARI INI?</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h2>Login</h2>
-        <label>Nama:</label>
-        <input type="text" id="nama" placeholder="Masukkan Nama">
 
-        <label>Jabatan / Departemen:</label>
-        <input type="text" id="departemen" placeholder="Masukkan Jabatan/Departemen">
+    <h2>Login</h2>
 
-        <label>Project Name:</label>
-        <input type="text" id="project" placeholder="Masukkan Project Name">
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama"> <br>
 
-        <button onclick="login()">Login</button>
-    </div>
+    <label for="departemen">Departemen:</label>
+    <input type="text" id="departemen"> <br>
 
-    <script>
-        function login() {
-            let nama = document.getElementById("nama").value;
-            let departemen = document.getElementById("departemen").value;
-            let project = document.getElementById("project").value;
+    <label for="project">Project Name:</label>
+    <input type="text" id="project"> <br>
 
-            if (!nama || !departemen || !project) {
-                alert("Semua field harus diisi!");
-                return;
-            }
+    <button onclick="login()">Login</button>
 
-            localStorage.setItem("nama", nama);
-            localStorage.setItem("departemen", departemen);
-            localStorage.setItem("project", project);
-
-            window.location.href = "index.html"; // Arahkan ke halaman input setelah login
-        }
-    </script>
 </body>
 </html>

@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     let nama = localStorage.getItem("nama");
     let departemen = localStorage.getItem("departemen");
+    let project = localStorage.getItem("project");
 
-    if (!nama || !departemen) {
+    if (!nama || !departemen || !project) {
         window.location.href = "login.html"; // Paksa balik ke login jika belum login
     } else {
         document.getElementById("nama").value = nama;
         document.getElementById("departemen").value = departemen;
+        document.getElementById("project").value = project;
     }
 });
 

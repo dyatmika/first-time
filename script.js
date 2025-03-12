@@ -12,8 +12,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-async function submitData() {
-    // Ambil nilai input
+// Fungsi login & simpan ke localStorage
+function login() {
+    let nama = document.getElementById("nama").value;
+    let departemen = document.getElementById("departemen").value;
+    let project = document.getElementById("project").value;
+
+    if (!nama || !departemen || !project) {
+        alert("Semua field harus diisi!");
+        return;
+    }
+
+    localStorage.setItem("nama", nama);
+    localStorage.setItem("departemen", departemen);
+    localStorage.setItem("project", project);
+
+    window.location.href = "index.html"; // Arahkan ke halaman input setelah login
+}
+
+// Fungsi submit data ke Google Sheets
+function submitData() {
     let nama = document.getElementById("nama").value;
     let departemen = document.getElementById("departemen").value;
     let project = document.getElementById("project").value;
@@ -24,18 +42,10 @@ async function submitData() {
         alert("Harap isi semua data!");
         return;
     }
-    let fotoBarangUrl = await uploadFoto(fotoInput.files[0]);
 
-    let formData = {
-        nama: nama,
-        departemen: departemen,
-        project: project,
-        nama_alat: nama_alat,
-        jumlah: jumlah,
-    };
-let data = { nama, departemen, project, alat, jumlah };
+    let data = { nama, departemen, project, alat, jumlah };
 
-    fetch("https://script.google.com/macros/s/AKfycby9DOyEt6KfzvgjjnOMaSy4SYXCnPqM6FFyUwgvHAJU5etuJdzmgHWE9mdAPLw42VrEuw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycxyz1234567890/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -47,6 +57,8 @@ let data = { nama, departemen, project, alat, jumlah };
     })
     .catch(error => console.error("Error:", error));
 }
+
+// Fungsi logout
 function logout() {
     localStorage.removeItem("nama");
     localStorage.removeItem("departemen");

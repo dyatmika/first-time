@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Data Alat</title>
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div class="container">
+        <h2>Input Data Alat</h2>
 
-    <h2>Input Data Alat</h2>
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" readonly>
 
-    <label for="nama">Nama:</label>
-    <input type="text" id="nama" readonly> <br>
+        <label for="departemen">Departemen:</label>
+        <input type="text" id="departemen" readonly>
 
-    <label for="departemen">Departemen:</label>
-    <input type="text" id="departemen" readonly> <br>
+        <label for="project">Project Name:</label>
+        <input type="text" id="project" readonly>
 
-    <label for="project">Project Name:</label>
-    <input type="text" id="project" readonly> <br>
+        <label for="alat">Nama Alat:</label>
+        <input type="text" id="alat" required>
 
-    <label for="alat">Nama Alat:</label>
-    <input type="text" id="alat" required> <br>
+        <label for="jumlah">Jumlah:</label>
+        <input type="number" id="jumlah" required>
 
-    <label for="jumlah">Jumlah:</label>
-    <input type="number" id="jumlah" required> <br>
-
-    <button id="submitBtn">Submit</button>
-    <button onclick="logout()">Logout</button>
-
+        <button id="submitBtn">Submit</button>
+        <button onclick="logout()">Logout</button>
+    </div>
 </body>
 </html>
